@@ -13,18 +13,18 @@ const TodoListItem = ({ todo, index, deleteTodo, editTodo }) => {
 
   const [inputValue, setInputValue] = useState(todo);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     editTodo(inputValue, index);
     setEditState(false);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setInputValue(event.target.value);
   };
 
   return (
-    <ListItem dense button>
+    <ListItem dense button key={index}>
       <Checkbox tabIndex={-1} disableRipple />
       {editState ? (
         <form onSubmit={handleSubmit}>
